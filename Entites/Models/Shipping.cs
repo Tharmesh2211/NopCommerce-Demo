@@ -27,8 +27,5 @@ namespace Entites.Models
         public DateTime ModifiedAt { get; set; }
         public bool IsDeleted { get; set; }
 
-        public int ProductID {  get; set; }
-        public Product Product { get; set; }
-
     }
 }

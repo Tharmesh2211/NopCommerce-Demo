@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Entites.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20240109105517_Testing3")]
-    partial class Testing3
+    [Migration("20240110045350_Testing")]
+    partial class Testing
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -409,6 +409,12 @@ namespace Entites.Migrations
                     b.Property<int>("GTINNumber")
                         .HasColumnType("int");
 
+                    b.Property<int>("GiftCardID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("InventoryId")
+                        .HasColumnType("int");
+
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
@@ -460,12 +466,17 @@ namespace Entites.Migrations
                     b.Property<bool>("Published")
                         .HasColumnType("bit");
 
+                    b.Property<int>("RecurringProductsId")
+                        .HasColumnType("int");
+
                     b.Property<double>("ReferenceAmount")
                         .HasColumnType("float");
 
-                    b.Property<string>("ReferenceUnit")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(100)");
+                    b.Property<int>("ReferenceUnit")
+                        .HasColumnType("int");
+
+                    b.Property<int>("RentalId")
+                        .HasColumnType("int");
 
                     b.Property<int>("RequiredproductIDs")
                         .HasColumnType("int");
@@ -475,6 +486,12 @@ namespace Entites.Migrations
 
                     b.Property<string>("SKU")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("SeoId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ShippingId")
+                        .HasColumnType("int");
 
                     b.Property<string>("ShortDescription")
                         .HasColumnType("nvarchar(max)");
@@ -494,6 +511,9 @@ namespace Entites.Migrations
                     b.Property<bool>("VisibleIndividualy")
                         .HasColumnType("bit");
 
+                    b.Property<int>("downloadableProductID")
+                        .HasColumnType("int");
+
                     b.Property<bool>("pangvBasePriceEnable")
                         .HasColumnType("bit");
 
@@ -503,9 +523,8 @@ namespace Entites.Migrations
                     b.Property<double>("productCost")
                         .HasColumnType("float");
 
-                    b.Property<string>("unitOfProduct")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(100)");
+                    b.Property<int>("unitOfProduct")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -513,9 +532,23 @@ namespace Entites.Migrations
 
                     b.HasIndex("DiscountId");
 
+                    b.HasIndex("GiftCardID");
+
+                    b.HasIndex("InventoryId");
+
                     b.HasIndex("ManufacturerId");
 
+                    b.HasIndex("RecurringProductsId");
+
+                    b.HasIndex("RentalId");
+
+                    b.HasIndex("SeoId");
+
+                    b.HasIndex("ShippingId");
+
                     b.HasIndex("VendorId");
+
+                    b.HasIndex("downloadableProductID");
 
                     b.ToTable("Product");
                 });
@@ -664,9 +697,6 @@ namespace Entites.Migrations
                     b.Property<string>("ModifiedBy")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("ProductID")
-                        .HasColumnType("int");
-
                     b.Property<bool>("ShippingEnabled")
                         .HasColumnType("bit");
 
@@ -687,8 +717,6 @@ namespace Entites.Migrations
                         .HasColumnType("nvarchar(100)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("ProductID");
 
                     b.ToTable("Shipping");
                 });
@@ -825,9 +853,45 @@ namespace Entites.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("Entites.Models.GiftCard", "GiftCard")
+                        .WithMany()
+                        .HasForeignKey("GiftCardID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Entites.Models.Inventory", "Inventory")
+                        .WithMany()
+                        .HasForeignKey("InventoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("Entites.Models.Manufacturer", "Manufacturer")
                         .WithMany()
                         .HasForeignKey("ManufacturerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Entites.Models.Recurring_Product", "RecurringProducts")
+                        .WithMany()
+                        .HasForeignKey("RecurringProductsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Entites.Models.Rental", "Rental")
+                        .WithMany()
+                        .HasForeignKey("RentalId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Entites.Models.SEO", "SEO")
+                        .WithMany()
+                        .HasForeignKey("SeoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Entites.Models.Shipping", "Shipping")
+                        .WithMany()
+                        .HasForeignKey("ShippingId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -837,24 +901,33 @@ namespace Entites.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("Entites.Models.DownloadableProduct", "DownloadableProduct")
+                        .WithMany()
+                        .HasForeignKey("downloadableProductID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Category");
 
+                    b.Navigation("DownloadableProduct");
+
+                    b.Navigation("GiftCard");
+
+                    b.Navigation("Inventory");
+
                     b.Navigation("Manufacturer");
+
+                    b.Navigation("RecurringProducts");
+
+                    b.Navigation("Rental");
+
+                    b.Navigation("SEO");
+
+                    b.Navigation("Shipping");
 
                     b.Navigation("Vendor");
 
                     b.Navigation("discount");
-                });
-
-            modelBuilder.Entity("Entites.Models.Shipping", b =>
-                {
-                    b.HasOne("Entites.Models.Product", "Product")
-                        .WithMany()
-                        .HasForeignKey("ProductID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Product");
                 });
 #pragma warning restore 612, 618
         }

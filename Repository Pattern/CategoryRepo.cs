@@ -64,5 +64,15 @@ namespace Repository_Pattern
                 await _dataContext.SaveChangesAsync();
             }
         }
+
+        public async Task<IQueryable<Category>> SearchyByValues(string name)
+        {
+
+            var query = from value in _dataContext.Category
+                        where value.CategoryName == name
+                        select value;
+
+            return query;
+        }
     }
 }

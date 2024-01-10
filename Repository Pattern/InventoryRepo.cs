@@ -71,5 +71,14 @@ namespace Repository_Pattern
 
             }
         }
+
+        public Task<IQueryable<Inventory>> SearchyByStockQuantity(int sq)
+        {
+            var query = from value in appDbContext.Inventory
+                        where value.Stockquantity > 3
+                        select value;
+
+            return (Task<IQueryable<Inventory>>)query;
+        }
     }
 }

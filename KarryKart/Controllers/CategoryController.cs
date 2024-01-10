@@ -1,10 +1,12 @@
 ﻿using Contracts;
 using Entites.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace KarryKart.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class CategoryController : ControllerBase

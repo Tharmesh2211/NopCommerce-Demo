@@ -13,6 +13,7 @@ namespace Contracts
         Task<Category> GetCategoryId(int parcatgId);
         Task<Category> AddCategory(Category parcatg);
         Task<Category> UpdateCategory(Category parcatg);
+        Task<IQueryable<Category>> SearchyByValues(string name);
         Task DeleteCategory(int parcatgId);
     }
 }
