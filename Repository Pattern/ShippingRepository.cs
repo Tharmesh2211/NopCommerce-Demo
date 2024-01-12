@@ -10,10 +10,10 @@ using System.Threading.Tasks;
 
 namespace Repository_Pattern
 {
-    public class ShippingRepo : IShipping
+    public class ShippingRepository : IShipping
     {
         private readonly DataContext _dataContext;
-        public ShippingRepo(DataContext dataContext)
+        public ShippingRepository(DataContext dataContext)
         {
             _dataContext = dataContext;
         }

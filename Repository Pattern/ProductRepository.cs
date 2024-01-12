@@ -2,18 +2,14 @@
 using Entites.Data;
 using Entites.Models;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace Repository_Pattern
 {
-    public class ProductRepo : IProduct
+    public class ProductRepository : IProduct
     {
         private readonly DataContext _dataContext;
-        public ProductRepo(DataContext dataContext)
+        public ProductRepository(DataContext dataContext)
         {
             _dataContext = dataContext;
         }

@@ -11,8 +11,8 @@ namespace Entites.Models
         public int CategoryId { get; set; }
         public string CategoryName { get; set; }
         public string CategoryDescription { get; set; }
-        public int Parent_CatgId { get; set; }
-        public ParentCategory Parent_Catg { get; set; }
+        public int ParentCategoryId { get; set; }
+        public ParentCategory ParentCategory { get; set; }
         public int TaxID {  get; set; }
         public Tax Tax { get; set; }
         public DateTime CreatedAt { get; set; }

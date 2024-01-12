@@ -10,11 +10,11 @@ using System.Threading.Tasks;
 
 namespace Repository_Pattern
 {
-    public class InventoryRepo : IInventory
+    public class InventoryRepository : IInventory
     {
         private readonly DataContext appDbContext;
 
-        public InventoryRepo(DataContext appDbContext)
+        public InventoryRepository(DataContext appDbContext)
         {
             this.appDbContext = appDbContext;
         }

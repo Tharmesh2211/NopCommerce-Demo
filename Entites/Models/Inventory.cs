@@ -15,14 +15,14 @@ namespace Entites.Models
         public WarehouseEnum warehouse { get; set; }
         public bool MultipleWarehouse { get; set; }
         public bool Displayavailability { get; set; }
-        public int Minimumstockqty { get; set; }
+        public int MinimumstockQuantity { get; set; }
         public Lowstockactivityenum lowstockactivityenum { get; set; }
         public int Notifyforqtybelow { get; set; }
         public BackordersEnum backordersbelow { get; set; }
         public bool Allowbackinstocksubscriptions { get; set; }
         public ProductavailabilityrangeEnum productavailabilityrange { get; set; }
-        public int Minimumcartqty { get; set; }
-        public int Maximumcartqty { get; set; }
+        public int Minimumcartquantity { get; set; }
+        public int Maximumcartquantity { get; set; }
         public string Allowedquantities { get; set; }
         public bool Notreturnable { get; set; }
         public DateTime CreatedAt { get; set; }

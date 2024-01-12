@@ -10,10 +10,10 @@ using System.Threading.Tasks;
 
 namespace Repository_Pattern
 {
-    public class GiftCardRepo : IGiftCard
+    public class GiftCardRepository : IGiftCard
     {
         private readonly DataContext _dataContext;
-        public GiftCardRepo(DataContext dataContext)
+        public GiftCardRepository(DataContext dataContext)
         {
             _dataContext = dataContext;
         }

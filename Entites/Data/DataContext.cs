@@ -1,4 +1,5 @@
 ﻿using Entites.Models;
+using Entites.Models.Customer;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -31,6 +32,17 @@ namespace Entites.Data
         public virtual DbSet<DownloadableProduct> DownloadProduct { get; set; }
         public virtual DbSet<Recurring_Product> RecurringProduct{ get; set; }
         public virtual DbSet<SEO> SEO{ get; set; }
+        public virtual DbSet<CartAndWishlist> CartAndWishlist { get; set; }
+        public virtual DbSet<CustomerRole> CustomerRoles { get; set; }
+        public virtual DbSet<RewardPoint> RewardPoint { get; set; }
+        public virtual DbSet<OnlineCustomer> OnlineCustomers { get; set; }
+        public virtual DbSet<Orders> Orders { get; set; }
+        public virtual DbSet<StockSubscriptions> StockSubscriptions { get; set; }
+        public virtual DbSet<CustomerInfo> CustomerInfos { get; set; }
+        public virtual DbSet<Address> Address { get; set; }
+        
+
+
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     => optionsBuilder.UseSqlServer("Data Source=DESKTOP-EN72J61\\SQLEXPRESS;Initial Catalog=KarryKart;Integrated Security=True;TrustServerCertificate=True;");

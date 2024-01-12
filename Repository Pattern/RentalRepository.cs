@@ -10,11 +10,11 @@ using System.Threading.Tasks;
 
 namespace Repository_Pattern
 {
-    public class RentalRepo : IRental
+    public class RentalRepository : IRental
     {
         private readonly DataContext appDbContext;
 
-        public RentalRepo(DataContext appDbContext)
+        public RentalRepository(DataContext appDbContext)
         {
             this.appDbContext = appDbContext;
         }

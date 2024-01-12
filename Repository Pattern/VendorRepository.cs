@@ -10,10 +10,10 @@ using System.Threading.Tasks;
 
 namespace Repository_Pattern
 {
-    public class VendorRepo : IVendor
+    public class VendorRepository : IVendor
     {
         private readonly DataContext _dataContext;
-        public VendorRepo(DataContext dataContext)
+        public VendorRepository(DataContext dataContext)
         {
             _dataContext = dataContext;
         }

@@ -10,10 +10,10 @@ namespace Contracts
     public interface IShipping
     {
         Task<IEnumerable<Shipping>> GetShippings();
-        Task<Shipping> GetShippingId(int Shippingid);
+        Task<Shipping> GetShippingId(int ShippingId);
         Task<Shipping> AddShipping(Shipping shipping);
         Task<Shipping> UpdateShipping(Shipping shipping);
-        Task DeleteShipping(int discountid);
+        Task DeleteShipping(int ShippingId);
 
     }
 }

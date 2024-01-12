@@ -10,11 +10,11 @@ using System.Threading.Tasks;
 
 namespace Repository_Pattern
 {
-    public class SEORepo : ISEO
+    public class SEORepository : ISEO
     {
         private readonly DataContext appDbContext;
 
-        public SEORepo(DataContext appDbContext)
+        public SEORepository(DataContext appDbContext)
         {
             this.appDbContext = appDbContext;
         }

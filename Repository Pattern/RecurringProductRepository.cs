@@ -5,11 +5,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Repository_Pattern
 {
-    public class RecurringProductRepo : IRecurringProduct
+    public class RecurringProductRepository : IRecurringProduct
     {
         private readonly DataContext appDbContext;
 
-        public RecurringProductRepo(DataContext appDbContext)
+        public RecurringProductRepository(DataContext appDbContext)
         {
             this.appDbContext = appDbContext;
         }

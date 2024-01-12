@@ -10,9 +10,9 @@ namespace Contracts
     public interface IProduct
     {
         Task<IEnumerable<Product>> GetProducts();
-        Task<Product> GetProductById(int prodId);
+        Task<Product> GetProductById(int productId);
         Task<Product> AddProduct(Product product);
         Task<Product> UpdateProduct(Product product);
-        Task DeleteProduct(int prodId);
+        Task DeleteProduct(int productId);
     }
 }

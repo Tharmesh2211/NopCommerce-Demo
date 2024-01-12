@@ -10,10 +10,10 @@ namespace Contracts
     public interface IParentCategory
     {
         Task<IEnumerable<ParentCategory>> GetParentCategory();
-        Task<ParentCategory> GetParentCategoryId(int parcatgId);
-        Task<ParentCategory> AddParentCategory(ParentCategory parcatg);
-        Task<ParentCategory> UpdateParentCategory(ParentCategory parcatg);
-        Task DeleteParentCategory(int parcatgId);
+        Task<IEnumerable<ParentCategory>> GetParentCategoryId(int ParentCategoryId);
+        Task<ParentCategory> AddParentCategory(ParentCategory ParentCategory);
+        Task<IEnumerable<ParentCategory>> UpdateParentCategory(ParentCategory ParentCategory);
+        Task<IEnumerable<ParentCategory>> DeleteParentCategory(int ParentCategoryId);
         Task<IQueryable<ParentCategory>> GetParentCategoryByName(string name);
 
     }

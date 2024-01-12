@@ -10,10 +10,10 @@ using System.Threading.Tasks;
 
 namespace Repository_Pattern
 {
-    public class DiscountRepo : IDiscounts
+    public class DiscountRepository : IDiscounts
     {
         private readonly DataContext _dataContext;
-        public DiscountRepo(DataContext dataContext)
+        public DiscountRepository(DataContext dataContext)
         {
             _dataContext = dataContext;
         }

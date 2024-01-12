@@ -10,10 +10,10 @@ using System.Threading.Tasks;
 
 namespace Repository_Pattern
 {
-    public class CategoryRepo : ICategory
+    public class CategoryRepository : ICategory
     {
         private readonly DataContext _dataContext;
-        public CategoryRepo(DataContext dataContext)
+        public CategoryRepository(DataContext dataContext)
         {
             _dataContext = dataContext;
         }

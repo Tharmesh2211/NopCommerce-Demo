@@ -10,10 +10,10 @@ using System.Threading.Tasks;
 
 namespace Repository_Pattern
 {
-    public class ManufacturerRepo : IManufactures
+    public class ManufacturerRepository : IManufactures
     {
         private readonly DataContext _dataContext;
-        public ManufacturerRepo(DataContext dataContext)
+        public ManufacturerRepository(DataContext dataContext)
         {
             _dataContext = dataContext;
         }

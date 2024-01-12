@@ -3,56 +3,66 @@ using Entites.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.FileProviders;
 
 namespace KarryKart.Controllers
 {
-    [Authorize]
 
     [Route("api/[controller]")]
     [ApiController]
     public class ParentCategoryController : ControllerBase
     {
-        private readonly IParentCategory _context;
-        public ParentCategoryController(IParentCategory context)
+        private readonly IParentCategory _parentCategory;
+        public ParentCategoryController(IParentCategory parentCategory)
         {
-            _context = context;
+            _parentCategory = parentCategory;
         }
-        [HttpGet("GetParentCatg")]
-        public async Task<IEnumerable<ParentCategory>> GetParentCatg()
+        [HttpGet("GetParentCategory")]
+        public async Task<IEnumerable<ParentCategory>> GetParentCategory()
         {
-            var pro = await _context.GetParentCategory();
-            return pro;
+            var ParentCategory = await _parentCategory.GetParentCategory();
+
+            return ParentCategory != null ? ParentCategory : Enumerable.Empty<ParentCategory>();
+
         }
 
-        [HttpGet("GetParentCatgId")]
-        public async Task<ActionResult<ParentCategory>> GetParentById(int parcatgId)
+        [HttpGet("GetParentCategoryById")]
+        public async Task<IEnumerable<ParentCategory>> GetParentCategoryById(int ParentCategoryId)
         {
-            var pro = await _context.GetParentCategoryId(parcatgId);
-            return pro;
+            var ParentCategory = await _parentCategory.GetParentCategoryId(ParentCategoryId);
+
+            return ParentCategory != null ? ParentCategory : Enumerable.Empty<ParentCategory>();
         }
 
-        [HttpPost("CreateParentCatg")]
-        public async Task<ActionResult<ParentCategory>> CreateParentCatg(ParentCategory parent_Catg)
+        [HttpPost("PostParentCategory")]
+        public async Task<ActionResult<ParentCategory>> PostParentCategory(ParentCategory parentCategory)
         {
-            var pro = await _context.AddParentCategory(parent_Catg);
-            return pro;
+            var ParentCategory = await _parentCategory.AddParentCategory(parentCategory);
+            return ParentCategory;
         }
-        [HttpPut("UpdateParentCatg")]
-        public async Task<ActionResult<ParentCategory>> UpdateParentCatg(ParentCategory parent_Catg)
+        [HttpPut("UpdateParentCategory")]
+        public async Task<ActionResult<ParentCategory>> UpdateParentCategory(ParentCategory parentCategory)
         {
-            var pro = await _context.UpdateParentCategory(parent_Catg);
-            return pro;
+            var updatedParentCategory = await _parentCategory.UpdateParentCategory(parentCategory);
+
+            return updatedParentCategory.Any()? Ok(updatedParentCategory) : Ok(new { message = "No Data Found !" });
         }
-        [HttpDelete("DeleteParentCatg")]
-        public async Task<IActionResult> DeleteParentCatg(int id)
+        [HttpDelete("DeleteParentCategory")]
+        public async Task<ActionResult> DeleteParentCategory(int id)
         {
-            await _context.DeleteParentCategory(id);
-            return NoContent();
+            var DeleteParentCategory = await _parentCategory.DeleteParentCategory(id);
+
+            if(DeleteParentCategory.Any())
+            {
+                return Ok(new { message = " Successfully Deleted" });
+            }
+            return Ok(new { message = "No Data Found!" });
+
         }
         [HttpGet("GetParentCatbByName")]
         public async Task<ActionResult<IQueryable<ParentCategory>>> GetParentByName(string name)
         {
-            var pro = await _context.GetParentCategoryByName(name);
+            var pro = await _parentCategory.GetParentCategoryByName(name);
             return Ok(pro);
         }
     }

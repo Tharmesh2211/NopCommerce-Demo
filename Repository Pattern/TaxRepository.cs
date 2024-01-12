@@ -10,10 +10,10 @@ using System.Threading.Tasks;
 
 namespace Repository_Pattern
 {
-    public class TaxRepo : ITax
+    public class TaxRepository : ITax
     {
         private readonly DataContext _dataContext;
-        public TaxRepo(DataContext dataContext)
+        public TaxRepository(DataContext dataContext)
         {
             _dataContext = dataContext;
         }
